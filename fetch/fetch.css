@@ -1,0 +1,10 @@
+/* body{background: linear-gradient();} */
+.img{position: absolute; top: 50px; left: 80px; display: none;}
+table{border: 1px solid black; display:none}
+table thead tr{border: 1px solid black;}
+table thead tr th{border: 1px solid black; padding: 10px;}
+
+table tbody tr td{border: 1px solid black; padding: 10px; text-align: center;}
+
+.input{padding: 10px; border: none; box-shadow: 0 0 22px grey; border-radius: 10px; margin-bottom: 50px; width: 50%; height: 50px;font-size: 30px;}
+.but{padding: 5px 20px 5px 20px; background-color: red; font-size: 20px; color: white; font-weight: 900; cursor: pointer;}
