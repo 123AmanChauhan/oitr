@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <span class="err1"></span>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>State</th>
+          <th>Region</th>
+          <th>District</th>
+          <th>Country</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script>
+      const queryString = window.location.search;
+      
+      const urlParams = new URLSearchParams(queryString);
+      const pin = urlParams.get("pin");
+      if (pin) {
+        let url = `https://api.postalpincode.in/pincode/${pin}`;
+        fetch(url)
+          .then((i) => i.json())
+          .then((i) => {
+            if (i[0].Status == "Error") {
+              document.querySelector(".err1").textContent = "No pin Code Find";
+            } else {
+              document.querySelector("table").style.display = "block";
+              document.querySelector(".err1").style.display = "none";
+              let data = i[0].PostOffice;
+              data.forEach((i) => {
+                document.querySelector(
+                  "table tbody"
+                ).innerHTML += `<tr><td>${i.Name}</td><td>${i.State}</td><td>${i.Region}</td><td>${i.District}</td><td>${i.Country}</td></tr>`;
+              });
+            }
+          });
+      } else {
+        window.location = "/fetch.html";
+      }
+    </script>
+  </body>
+</html>
